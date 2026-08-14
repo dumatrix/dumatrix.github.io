@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ---------- MOBILE DRAWER ----------
     const menuToggle = document.getElementById("menuToggle");
     const closeBtn = document.getElementById("closeBtn");
     const navLinks = document.getElementById("navLinks");
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (closeBtn) closeBtn.addEventListener("click", closeMenu);
     if (navOverlay) navOverlay.addEventListener("click", closeMenu);
 
-    // Auto-open on first mobile visit
     const isMobile = window.innerWidth <= 768;
     const hasVisited = localStorage.getItem("du_matrix_visited");
     if (isMobile && !hasVisited) {

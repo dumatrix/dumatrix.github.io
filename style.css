@@ -21,7 +21,6 @@ body {
     width: 100%;
 }
 
-/* ---------- HEADER & NAV ---------- */
 header {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
@@ -65,7 +64,6 @@ nav {
     height: 2.5px;
     background-color: #58a6ff;
     border-radius: 2px;
-    transition: background 0.2s;
 }
 
 .close-btn {
@@ -95,7 +93,6 @@ nav {
     display: none;
 }
 
-/* ---------- MOBILE SLIDE DRAWER ---------- */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -168,7 +165,6 @@ nav {
     }
 }
 
-/* ---------- MAIN & HERO ---------- */
 main {
     flex: 1;
     padding: 30px 0;
@@ -206,7 +202,6 @@ main {
     font-size: 1rem;
 }
 
-/* ---------- CARDS GRID ---------- */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -270,7 +265,6 @@ main {
     margin-top: 4px;
 }
 
-/* ---------- FOOTER ---------- */
 footer {
     background-color: #161b22;
     border-top: 1px solid #30363d;
@@ -281,7 +275,6 @@ footer {
     margin-top: 30px;
 }
 
-/* ---------- RESPONSIVE TWEAKS ---------- */
 @media (max-width: 600px) {
     .cards-grid {
         grid-template-columns: 1fr;
