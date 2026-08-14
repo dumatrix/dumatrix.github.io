@@ -38,13 +38,21 @@ nav {
     font-weight: bold;
     color: #58a6ff;
     text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 .nav-links a {
     color: #8b949e;
     text-decoration: none;
-    margin-left: 20px;
     font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover,
@@ -52,9 +60,35 @@ nav {
     color: #58a6ff;
 }
 
+/* ==========================================
+   MOBILE RESPONSIVE HEADER FIX
+   ========================================== */
+@media (max-width: 768px) {
+    header {
+        padding: 12px 0;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+    }
+
+    .nav-links a {
+        font-size: 0.88rem;
+    }
+}
+
 main {
     flex: 1;
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 
 .hero {
