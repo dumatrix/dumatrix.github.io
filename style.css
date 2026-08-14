@@ -168,10 +168,26 @@ nav {
     }
 }
 
-/* ---------- MAIN LAYOUT ---------- */
+/* ---------- MAIN & HERO ---------- */
 main {
     flex: 1;
     padding: 30px 0;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    color: #f0f6fc;
+    margin-bottom: 8px;
+}
+
+.hero p {
+    color: #8b949e;
+    font-size: 1.1rem;
 }
 
 .page-header {
@@ -188,126 +204,6 @@ main {
 .page-header p {
     color: #8b949e;
     font-size: 1rem;
-}
-
-/* ---------- HERO SLIDER ---------- */
-.hero-slider {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 40px;
-    background: #161b22;
-    border: 1px solid #30363d;
-    min-height: 280px;
-}
-
-.slides-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.slide {
-    display: none;
-    padding: 40px 30px;
-    text-align: center;
-    animation: fadeIn 0.6s ease;
-}
-
-.slide.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
-}
-
-.slide-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.slide-content h1 {
-    font-size: 2rem;
-    color: #f0f6fc;
-    margin-bottom: 10px;
-}
-
-.slide-content p {
-    font-size: 1.1rem;
-    color: #8b949e;
-    margin-bottom: 20px;
-}
-
-.slide-content .btn {
-    display: inline-block;
-    background-color: #238636;
-    color: #fff;
-    padding: 10px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: background 0.2s;
-}
-
-.slide-content .btn:hover {
-    background-color: #2ea043;
-}
-
-/* Slider buttons */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(22, 27, 34, 0.8);
-    border: 1px solid #30363d;
-    color: #c9d1d9;
-    font-size: 1.8rem;
-    padding: 6px 14px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
-    z-index: 5;
-    line-height: 1;
-}
-
-.slider-btn:hover {
-    background: #30363d;
-    color: #f0f6fc;
-}
-
-.slider-btn.prev {
-    left: 12px;
-}
-
-.slider-btn.next {
-    right: 12px;
-}
-
-/* Indicators */
-.slider-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 0 18px;
-}
-
-.slider-indicators .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #30363d;
-    border: 1px solid #484f58;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.slider-indicators .dot.active {
-    background: #58a6ff;
-    border-color: #58a6ff;
-    transform: scale(1.2);
 }
 
 /* ---------- CARDS GRID ---------- */
@@ -387,22 +283,10 @@ footer {
 
 /* ---------- RESPONSIVE TWEAKS ---------- */
 @media (max-width: 600px) {
-    .slide {
-        padding: 30px 16px;
-    }
-    .slide-content h1 {
-        font-size: 1.6rem;
-    }
-    .slider-btn {
-        font-size: 1.4rem;
-        padding: 4px 10px;
-    }
-    .slider-btn.prev { left: 6px; }
-    .slider-btn.next { right: 6px; }
-    .hero-slider {
-        min-height: 220px;
-    }
     .cards-grid {
         grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
     }
 }
