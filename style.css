@@ -24,7 +24,10 @@ body {
 header {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
-    padding: 15px 0;
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav {
@@ -44,10 +47,33 @@ nav {
     gap: 8px;
 }
 
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2.5px;
+    background-color: #58a6ff;
+    border-radius: 2px;
+}
+
+.close-btn {
+    display: none;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
 }
 
 .nav-links a {
@@ -63,26 +89,81 @@ nav {
     color: #58a6ff;
 }
 
-@media (max-width: 768px) {
-    header {
-        padding: 12px 0;
-    }
+.nav-overlay {
+    display: none;
+}
 
-    nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+/* ==========================================
+   MOBILE SLIDE-OUT DRAWER STYLING
+   ========================================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
     }
 
     .nav-links {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px 14px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100vh;
+        background-color: #161b22;
+        border-right: 1px solid #30363d;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 65px 25px 25px 25px;
+        gap: 22px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1001;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
     }
 
     .nav-links a {
-        font-size: 0.88rem;
+        font-size: 1.05rem;
+        width: 100%;
+        padding: 6px 0;
+        border-bottom: 1px solid #21262d;
+    }
+
+    .close-btn {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 18px;
+        background: none;
+        border: none;
+        color: #8b949e;
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .close-btn:hover {
+        color: #f0f6fc;
+    }
+
+    .nav-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.65);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .nav-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 
