@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DU Matrix | A Family of Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero-header">
+        <div class="container header-content">
+            <div>
+                <span class="badge">Delhi University Academic Hub</span>
+                <h1>DU Matrix</h1>
+                <p>A Family of Learning — Curated research material, lecture notes, and student resource portal.</p>
+            </div>
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Search Bar Section -->
+        <section class="card search-card">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search DU notes, subjects, or resource links (e.g. Real Analysis, arXiv)...">
+            </div>
+        </section>
+
+        <!-- Specialized Portals Section -->
+        <section class="card portal-card searchable-item">
+            <div class="card-header">
+                <h2>🎓 Subject Portals</h2>
+            </div>
+            <div class="portal-grid">
+                <a href="msc-math.html" class="portal-link-card">
+                    <div class="portal-icon">📐</div>
+                    <div>
+                        <h3>MSc Mathematics Notes</h3>
+                        <p>Real Analysis, Abstract Algebra, Topology, and Complex Analysis.</p>
+                        <span class="tag tag-math">DU MSc Math</span>
+                        <span class="tag tag-pdf">PDFs Included</span>
+                    </div>
+                    <span class="arrow">&rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- General Links Section -->
+        <section class="card">
+            <div class="card-header">
+                <h2>📚 Useful Links & Resources</h2>
+            </div>
+            <ul class="resource-list" id="resourceList">
+                <li class="resource-item searchable-item">
+                    <div class="resource-info">
+                        <a href="https://arxiv.org" target="_blank" class="resource-title">arXiv Open Access Papers</a>
+                        <p class="resource-desc">Open-access archive for 2+ million scholarly articles in physics, mathematics, and CS.</p>
+                    </div>
+                    <span class="tag tag-link">External Link</span>
+                </li>
+                <li class="resource-item searchable-item">
+                    <div class="resource-info">
+                        <a href="https://scholar.google.com" target="_blank" class="resource-title">Google Scholar</a>
+                        <p class="resource-desc">Search across a broad array of disciplines and academic literature.</p>
+                    </div>
+                    <span class="tag tag-link">External Link</span>
+                </li>
+                <li class="resource-item searchable-item">
+                    <div class="resource-info">
+                        <a href="#" class="resource-title">Sample Research Guide</a>
+                        <p class="resource-desc">Introductory guide on writing literature reviews for research students.</p>
+                    </div>
+                    <span class="tag tag-pdf">PDF Guide</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Interactive Request Form -->
+        <section class="card">
+            <div class="card-header">
+                <h2>✉️ Request or Share Notes</h2>
+                <p class="section-subtitle">Have specific questions or notes to submit? Join our community and send a message.</p>
+            </div>
+            
+            <form id="noteForm" class="styled-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="e.g. Jane Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" required placeholder="e.g. student@du.ac.in">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="actionType">I want to...</label>
+                    <select id="actionType">
+                        <option value="request">Request specific lecture/topic notes</option>
+                        <option value="share">Share my notes or resource links with you</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Details / Message</label>
+                    <textarea id="message" rows="4" required placeholder="Mention the specific topic, paper, or link details here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="file">Attach File (Optional)</label>
+                    <input type="file" id="file" class="file-input">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Submission</button>
+            </form>
+            
+            <div id="toast" class="toast"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DU Matrix • A Family of Learning</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
