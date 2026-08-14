@@ -3,119 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSc Mathematics Notes | DU Matrix</title>
+    <title>M.Sc. Mathematics | DU Matrix</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <header class="hero-header">
-        <div class="container header-content">
-            <div>
-                <span class="badge">Delhi University • MSc Mathematics</span>
-                <h1>📐 MSc Mathematics Portal</h1>
-                <p>DU Matrix — A Family of Learning</p>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">DU Matrix</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="msc-math.html" class="active">M.Sc. Mathematics</a>
             </div>
-            <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
-        </div>
+        </nav>
     </header>
 
     <main class="container">
-        <p style="margin-bottom: 20px;">
-            <a href="index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">&larr; Back to DU Matrix Home</a>
-        </p>
-
-        <!-- Real Analysis Section -->
-        <section class="card">
-            <div class="card-header">
-                <h2>1. Real Analysis & Measure Theory</h2>
-            </div>
-            <ul class="resource-list">
-                <li class="resource-item">
-                    <div class="resource-info">
-                        <a href="#" class="resource-title">Lebesgue Measure & Integration Notes</a>
-                        <p class="resource-desc">Sigma-algebras, measurable functions, Fatou's Lemma, and Dominated Convergence Theorem.</p>
-                    </div>
-                    <span class="tag tag-pdf">PDF Note</span>
-                </li>
-                <li class="resource-item">
-                    <div class="resource-info">
-                        <a href="#" class="resource-title">Functional Analysis Fundamentals</a>
-                        <p class="resource-desc">Banach spaces, Hilbert spaces, dual spaces, and linear operators.</p>
-                    </div>
-                    <span class="tag tag-pdf">PDF Note</span>
-                </li>
-            </ul>
+        <section class="hero">
+            <h1>M.Sc. Mathematics Notes</h1>
+            <p>Subject study materials.</p>
         </section>
 
-        <!-- Abstract Algebra Section -->
-        <!-- Field Theory Section -->
-<div class="subject-card">
-  <h2>Field Theory</h2>
-  <p>Lecture notes and study material covering field extensions, splitting fields, and Galois theory.</p>
-  
-  <a href="field-theory-notes.pdf" target="_blank" class="download-btn">
-    📄 View Field Theory Notes (PDF)
-  </a>
-</div>
-        <section class="card">
-            <div class="card-header">
-                <h2>2. Abstract Algebra</h2>
+        <section class="cards-grid">
+            <div class="card">
+                <h2>Field Theory</h2>
+                <p>Complete notes and solved problems.</p>
+                <span class="badge">Notes coming soon</span>
             </div>
-            <ul class="resource-list">
-                <li class="resource-item">
-                    <div class="resource-info">
-                        <a href="#" class="resource-title">Advanced Group & Ring Theory</a>
-                        <p class="resource-desc">Sylow Theorems, direct products, Euclidean domains, PID & UFD.</p>
-                    </div>
-                    <span class="tag tag-pdf">PDF Note</span>
-                </li>
-                <li class="resource-item">
-                    <div class="resource-info">
-                        <a href="#" class="resource-title">Field Extensions & Galois Theory</a>
-                        <p class="resource-desc">Algebraic extensions, splitting fields, and the Fundamental Theorem of Galois Theory.</p>
-                    </div>
-                    <span class="tag tag-pdf">PDF Note</span>
-                </li>
-            </ul>
-        </section>
 
-        <!-- Complex Analysis & Topology -->
-        <section class="card">
-            <div class="card-header">
-                <h2>3. Complex Analysis & Topology</h2>
+            <div class="card">
+                <h2>Real Analysis</h2>
+                <p>Lecture notes and reference material.</p>
+                <span class="badge">Notes coming soon</span>
             </div>
-            <ul class="resource-list">
-                <li class="resource-item">
-                    <div class="resource-info">
-                        <a href="#" class="resource-title">Complex Functions & Residue Theorem</a>
-                        <p class="resource-desc">Analytic functions, Cauchy integral formula, power series, and contour integration.</p>
-                    </div>
-                    <span class="tag tag-pdf">PDF Note</span>
-                </li>
-                <li class="resource-item">
-                    <div class="resource-info">
-                        <a href="#" class="resource-title">General Topology Essentials</a>
-                        <p class="resource-desc">Topological spaces, bases, continuous maps, compactness, and connectedness.</p>
-                    </div>
-                    <span class="tag tag-pdf">PDF Note</span>
-                </li>
-            </ul>
-        </section>
 
-        <!-- Call to Action -->
-        <section class="card">
-            <div class="card-header">
-                <h2>✉️ Need Specific Notes?</h2>
-                <p class="section-subtitle">If you need specific problem solutions or topics not covered here, use the request form on the <a href="index.html" style="color: var(--primary); font-weight: bold;">Home Page</a>.</p>
+            <div class="card">
+                <h2>Abstract Algebra</h2>
+                <p>Group theory and ring theory notes.</p>
+                <span class="badge">Notes coming soon</span>
+            </div>
+
+            <div class="card">
+                <h2>Topology</h2>
+                <p>Point-set and general topology.</p>
+                <span class="badge">Notes coming soon</span>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 DU Matrix • A Family of Learning</p>
+        <div class="container">
+            <p>&copy; DU Matrix. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
