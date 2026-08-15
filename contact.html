@@ -119,12 +119,9 @@
 
     <script src="script.js"></script>
     <script>
-        // Contact form submission via Google Apps Script
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('contactForm');
             const status = document.getElementById('formStatus');
-
-            // Your Google Apps Script Web App URL
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
 
             form.addEventListener('submit', function(e) {
@@ -147,13 +144,14 @@
                     body: JSON.stringify(formData)
                 })
                 .then(() => {
-                    status.textContent = '✅ Message sent successfully!';
+                    status.textContent = '✅ Message sent successfully! (Check your email)';
                     status.style.color = '#2ea043';
                     form.reset();
                 })
-                .catch(() => {
+                .catch((error) => {
                     status.textContent = '❌ Failed to send. Please try again or use our email directly.';
                     status.style.color = '#f85149';
+                    console.error('Error:', error);
                 });
             });
         });
