@@ -49,16 +49,24 @@
             <div class="card"><h2>Topology</h2><p>Point-set and general topology.</p><span class="badge">Notes coming soon</span></div>
         </section>
 
-        <!-- Request Notes Form -->
+        <!-- Request Notes Form – no separate subject box -->
         <section style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 30px;">
             <h2 style="text-align: center; color: #f0f6fc; margin-bottom: 8px;">📚 Can't find the notes you need?</h2>
             <p style="text-align: center; color: #8b949e; margin-bottom: 25px;">Fill out the form below – we'll try our best to locate them for you.</p>
             <div style="max-width: 600px; margin: 0 auto;">
                 <form id="requestFormMSc" style="display: flex; flex-direction: column; gap: 16px; background: #161b22; padding: 25px; border-radius: 8px; border: 1px solid #30363d;">
-                    <div><label for="reqNameMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your Name</label><input type="text" id="reqNameMSc" name="name" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;"></div>
-                    <div><label for="reqEmailMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your Email</label><input type="email" id="reqEmailMSc" name="email" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;"></div>
-                    <div><label for="reqTopicMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Topic / Subject you're looking for</label><input type="text" id="reqTopicMSc" name="subject" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;"></div>
-                    <div><label for="reqMessageMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Additional details (optional)</label><textarea id="reqMessageMSc" name="message" rows="3" style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9; resize: vertical;"></textarea></div>
+                    <div>
+                        <label for="reqNameMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your Name</label>
+                        <input type="text" id="reqNameMSc" name="name" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;">
+                    </div>
+                    <div>
+                        <label for="reqEmailMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your Email</label>
+                        <input type="email" id="reqEmailMSc" name="email" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;">
+                    </div>
+                    <div>
+                        <label for="reqMessageMSc" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Topic / Subject and details</label>
+                        <textarea id="reqMessageMSc" name="message" rows="4" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9; resize: vertical;"></textarea>
+                    </div>
                     <button type="submit" class="btn" style="align-self: center; padding: 12px 40px; font-size: 1rem;">Send Request</button>
                     <div id="statusMSc" style="text-align: center; margin-top: 8px; display: none;"></div>
                 </form>
@@ -87,10 +95,14 @@
                     const formData = {
                         name: document.getElementById('reqNameMSc').value.trim(),
                         email: document.getElementById('reqEmailMSc').value.trim(),
-                        subject: document.getElementById('reqTopicMSc').value.trim(),
                         message: document.getElementById('reqMessageMSc').value.trim()
                     };
-                    fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                    fetch(scriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    })
                     .then(() => {
                         status.textContent = '✅ Request sent! We\'ll get back to you soon.';
                         status.style.color = '#2ea043';
