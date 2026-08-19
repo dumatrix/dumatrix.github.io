@@ -543,3 +543,77 @@ footer {
     margin-top: 4px;
   }
 }
+/* Header layout with sections */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1 1 auto;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* On desktop, .nav-links is the nav-center */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-center {
+    display: none; /* hide center on mobile, it's in the drawer */
+  }
+  .nav-right {
+    margin-left: auto;
+  }
+  .nav-links {
+    /* drawer styles remain unchanged */
+  }
+}
+/* Fix header overflow */
+@media (min-width: 769px) {
+  .nav-links {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .search-input {
+    width: 140px;
+  }
+  .search-input:focus {
+    width: 180px;
+  }
+  .theme-toggle {
+    font-size: 1.2rem;
+    padding: 2px 8px;
+  }
+}
+@media (max-width: 768px) {
+  /* already handled by drawer */
+}
