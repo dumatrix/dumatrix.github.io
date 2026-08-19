@@ -43,14 +43,14 @@
             <div class="card"><h2>Share Your Ideas</h2><p>Since this project is continuously evolving, your feedback is super valuable! Have suggestions for new topics, features, or improvements? Feel free to share your ideas on what we should add next.</p><span class="badge">Ideas & Feedback Welcome</span></div>
         </section>
 
-        <section style="margin-top: 50px; border-top: 1px solid var(--border-color); padding-top: 30px;">
-            <h2 style="text-align: center; color: var(--text-heading); margin-bottom: 8px;">💬 Have a suggestion or question?</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">We'd love to hear your ideas – drop us a message below.</p>
+        <section style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 30px;">
+            <h2 style="text-align: center; color: #f0f6fc; margin-bottom: 8px;">💬 Have a suggestion or question?</h2>
+            <p style="text-align: center; color: #8b949e; margin-bottom: 25px;">We'd love to hear your ideas – drop us a message below.</p>
             <div style="max-width: 600px; margin: 0 auto;">
-                <form id="suggestionForm" style="display: flex; flex-direction: column; gap: 16px; background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <div><label for="sugName" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your Name</label><input type="text" id="sugName" name="name" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);"></div>
-                    <div><label for="sugEmail" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your Email</label><input type="email" id="sugEmail" name="email" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);"></div>
-                    <div><label for="sugMessage" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your message / suggestion</label><textarea id="sugMessage" name="message" rows="4" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); resize: vertical;"></textarea></div>
+                <form id="suggestionForm" style="display: flex; flex-direction: column; gap: 16px; background: #161b22; padding: 25px; border-radius: 8px; border: 1px solid #30363d;">
+                    <div><label for="sugName" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your Name</label><input type="text" id="sugName" name="name" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;"></div>
+                    <div><label for="sugEmail" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your Email</label><input type="email" id="sugEmail" name="email" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9;"></div>
+                    <div><label for="sugMessage" style="display: block; margin-bottom: 4px; color: #f0f6fc; font-weight: 500;">Your message / suggestion</label><textarea id="sugMessage" name="message" rows="4" required style="width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; color: #c9d1d9; resize: vertical;"></textarea></div>
                     <button type="submit" class="btn" style="align-self: center; padding: 12px 40px; font-size: 1rem;">Send Message</button>
                     <div id="statusSug" style="text-align: center; margin-top: 8px; display: none;"></div>
                 </form>
@@ -75,7 +75,7 @@
                     e.preventDefault();
                     status.style.display = 'block';
                     status.textContent = 'Sending...';
-                    status.style.color = 'var(--text-secondary)';
+                    status.style.color = '#8b949e';
                     const formData = {
                         name: document.getElementById('sugName').value.trim(),
                         email: document.getElementById('sugEmail').value.trim(),
