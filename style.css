@@ -338,11 +338,6 @@ footer {
     font-size: 1.8rem;
   }
 }
-/* ===== SEARCH BAR ===== */
-.search-container {
-  position: relative;
-  display: inline-block;
-}
 
 .search-input {
   background: var(--bg-primary);
