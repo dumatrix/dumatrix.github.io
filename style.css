@@ -338,3 +338,108 @@ footer {
     font-size: 1.8rem;
   }
 }
+/* ===== SEARCH BAR ===== */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 12px 6px 32px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  width: 160px;
+  transition: width 0.3s ease, border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  width: 220px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 8px 24px var(--shadow);
+  padding: 4px 0;
+}
+
+.search-results.active {
+  display: block;
+}
+
+.search-result-item {
+  padding: 10px 16px;
+  display: block;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: var(--bg-primary);
+}
+
+.search-result-item .result-title {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.search-result-item .result-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.search-result-item .result-badge {
+  font-size: 0.7rem;
+  background: var(--badge-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--badge-border);
+  padding: 1px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+/* Mobile: search inside drawer */
+@media (max-width: 768px) {
+  .search-input {
+    width: 100%;
+  }
+  .search-input:focus {
+    width: 100%;
+  }
+  .search-results {
+    position: static;
+    max-height: 200px;
+    margin-top: 4px;
+  }
+}
