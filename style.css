@@ -657,3 +657,14 @@ nav {
     align-items: flex-start !important;
   }
 }
+
+/* ---- Last Updated Dates ---- */
+.card-update {
+  font-size: 0.75rem !important;
+  color: var(--text-secondary) !important;
+  margin: 4px 0 8px 0 !important;
+  opacity: 0.8;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
