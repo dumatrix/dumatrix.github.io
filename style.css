@@ -130,7 +130,6 @@ nav {
   gap: 10px;
 }
 
-.theme-toggle {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -142,7 +141,6 @@ nav {
   line-height: 1;
 }
 
-.theme-toggle:hover {
   background: var(--border-color);
   color: var(--text-heading);
 }
@@ -569,7 +567,6 @@ footer {
   .search-input:focus {
     width: 180px;
   }
-  .theme-toggle {
     font-size: 1.2rem;
     padding: 2px 8px;
   }
