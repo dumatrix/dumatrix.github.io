@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DU Matrix | Home</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="description" content="Academic resources and Mathematics study material for Delhi University students.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav class="container">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"><span></span><span></span><span></span></button>
             <a href="index.html" class="logo">
-                <img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" style="height: 45px; width: auto; object-fit: contain; display: block;">
+                <img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;">
                 <span>DU Matrix</span>
             </a>
             <div class="nav-links" id="navLinks">
@@ -34,100 +29,69 @@
                     <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
                     <div id="searchResults" class="search-results"></div>
                 </div>
-                </div>
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
             </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
             <div class="nav-overlay" id="navOverlay"></div>
         </nav>
     </header>
+
     <main class="container">
+        <nav class="breadcrumb"><a href="index.html">Home</a></nav>
+
         <section class="hero">
-            <h1>DU Matrix</h1>
-            <p>Academic resources and Mathematics study material.</p>
+            <h1>Welcome to DU Matrix</h1>
+            <p class="hero-sub">Your one-stop hub for Mathematics study material</p>
+            <div class="hero-cta">
+                <a href="bsc-math.html" class="btn btn-primary">📖 B.Sc. Notes</a>
+                <a href="msc-math.html" class="btn btn-secondary">🎓 M.Sc. Notes</a>
+                <a href="phd.html" class="btn btn-outline">🔬 Ph.D Resources</a>
+            </div>
         </section>
+
         <section class="cards-grid">
-            <div class="card">
-                <h2>B.Sc. Math</h2>
-                <p>Undergraduate course notes and subject materials.</p>
-                <a href="bsc-math.html" class="btn">View Subjects</a>
-            </div>
-            <div class="card">
-                <h2>M.Sc. Math</h2>
-                <p>Postgraduate course notes and resources.</p>
-                <a href="msc-math.html" class="btn">View Subjects</a>
-            </div>
-            <div class="card">
-                <h2>Ph.D Math</h2>
-                <p>Research notes and advanced topics.</p>
-                <a href="phd.html" class="btn">View Ph.D Math</a>
-            </div>
+            <div class="card"><h2>B.Sc. Math</h2><p>Undergraduate course notes and subject materials.</p><a href="bsc-math.html" class="btn">View Subjects</a></div>
+            <div class="card"><h2>M.Sc. Math</h2><p>Postgraduate course notes and resources.</p><a href="msc-math.html" class="btn">View Subjects</a></div>
+            <div class="card"><h2>Ph.D Math</h2><p>Research notes and advanced topics.</p><a href="phd.html" class="btn">View Ph.D Math</a></div>
         </section>
-        <section style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 30px;">
-            <h2 style="text-align: center; color: var(--text-heading); margin-bottom: 8px;">📩 Send us a quick message</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">We'll get back to you as soon as possible.</p>
-            <div style="max-width: 600px; margin: 0 auto;">
-                <form id="homeContactForm" style="display: flex; flex-direction: column; gap: 16px; background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <div>
-                        <label for="homeName" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your Name</label>
-                        <input type="text" id="homeName" name="name" required 
-                               style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);">
-                    </div>
-                    <div>
-                        <label for="homeEmail" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your Email</label>
-                        <input type="email" id="homeEmail" name="email" required 
-                               style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);">
-                    </div>
-                    <div>
-                        <label for="homeMessage" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Message</label>
-                        <textarea id="homeMessage" name="message" rows="4" required 
-                                  style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); resize: vertical;"></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="align-self: center; padding: 12px 40px; font-size: 1rem;">Send Message</button>
-                    <div id="homeFormStatus" style="text-align: center; margin-top: 8px; display: none;"></div>
-                </form>
-            </div>
+
+        <section class="form-section">
+            <h2>📩 Send us a quick message</h2>
+            <p>We'll get back to you as soon as possible.</p>
+            <form id="homeContactForm" class="inline-form">
+                <input type="text" id="homeName" placeholder="Your Name" required>
+                <input type="email" id="homeEmail" placeholder="Your Email" required>
+                <textarea id="homeMessage" rows="4" placeholder="Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+                <div id="homeFormStatus" class="form-status"></div>
+            </form>
         </section>
     </main>
+
+    <footer><div class="container"><p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p></div></footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
+
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('homeContactForm');
-            const status = document.getElementById('homeFormStatus');
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    status.style.display = 'block';
-                    status.textContent = 'Sending...';
-                    status.style.color = '#8b949e';
-                    const formData = {
-                        name: document.getElementById('homeName').value.trim(),
-                        email: document.getElementById('homeEmail').value.trim(),
-                        message: document.getElementById('homeMessage').value.trim()
-                    };
-                    fetch(scriptURL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                    })
-                    .then(() => {
-                        status.textContent = '✅ Message sent successfully!';
-                        status.style.color = '#2ea043';
-                        form.reset();
-                    })
-                    .catch(() => {
-                        status.textContent = '❌ Failed to send. Please try again.';
-                        status.style.color = '#f85149';
-                    });
-                });
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('homeContactForm');
+        const status = document.getElementById('homeFormStatus');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                status.textContent = 'Sending...';
+                status.style.color = '#8b949e';
+                const formData = {
+                    name: document.getElementById('homeName').value.trim(),
+                    email: document.getElementById('homeEmail').value.trim(),
+                    message: document.getElementById('homeMessage').value.trim()
+                };
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                .then(() => { status.textContent = '✅ Message sent!'; status.style.color = '#2ea043'; form.reset(); })
+                .catch(() => { status.textContent = '❌ Failed. Please try again.'; status.style.color = '#f85149'; });
+            });
+        }
+    });
     </script>
-    <footer>
-        <div class="container">
-            <p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p>
-        </div>
-    </footer>
 </body>
 </html>
