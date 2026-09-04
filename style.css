@@ -386,3 +386,31 @@ footer {
 footer > .container {
   display: none; /* Hide old simple footer */
 }
+
+/* Force Desktop 3-column Footer */
+@media (min-width: 769px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        text-align: left;
+    }
+    .footer-bottom {
+        text-align: center !important;
+    }
+}
+
+/* Force Mobile 1-column Footer */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+}
+
+/* Fix purple default link colors in footer */
+.footer-col ul li a {
+    color: var(--text-secondary) !important;
+    text-decoration: none !important;
+}
+.footer-col ul li a:hover {
+    color: var(--accent) !important;
+}
