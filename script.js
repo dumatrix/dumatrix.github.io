@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Drawer
+    // Mobile Drawer
     const menuToggle = document.getElementById("menuToggle");
     const closeBtn = document.getElementById("closeBtn");
     const navLinks = document.getElementById("navLinks");
@@ -25,37 +25,53 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Scroll Top
+    // Scroll to Top
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     if (scrollTopBtn) {
         window.addEventListener("scroll", () => scrollTopBtn.classList.toggle("visible", window.scrollY > 300));
         scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     }
 
-    // Search Data
+    // Search Index
     const searchData = [
-        { title: "Calculus", desc: "Limits, continuity", url: "bsc-math.html", badge: "B.Sc." },
-        { title: "Linear Algebra", desc: "Vectors, matrices", url: "bsc-math.html", badge: "B.Sc." },
-        { title: "Abstract Algebra", desc: "Groups, rings", url: "bsc-math.html", badge: "B.Sc." },
-        { title: "Field Theory", desc: "Notes", url: "msc-math.html", badge: "M.Sc." },
-        { title: "Advanced Algebra", desc: "Galois", url: "phd.html", badge: "Ph.D" },
-        { title: "Functional Analysis", desc: "Banach", url: "phd.html", badge: "Ph.D" }
+        { title: "Calculus & Real Analysis", description: "Limits, continuity, multivariable calculus", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Linear Algebra", description: "Vector spaces, matrices, eigenvalues", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Abstract Algebra", description: "Groups, rings, fields", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Differential Equations", description: "ODE, PDE", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Numerical Methods", description: "Root finding, interpolation", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Mechanics", description: "Statics, dynamics", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Field Theory", description: "Complete notes", url: "msc-math.html", badge: "M.Sc." },
+        { title: "Real Analysis", description: "Lecture notes", url: "msc-math.html", badge: "M.Sc." },
+        { title: "Abstract Algebra", description: "Group theory, ring theory", url: "msc-math.html", badge: "M.Sc." },
+        { title: "Topology", description: "Point-set topology", url: "msc-math.html", badge: "M.Sc." },
+        { title: "Advanced Algebra", description: "Galois theory", url: "phd.html", badge: "Ph.D" },
+        { title: "Functional Analysis", description: "Banach spaces, operators", url: "phd.html", badge: "Ph.D" },
+        { title: "Research Methodology", description: "Paper writing", url: "phd.html", badge: "Ph.D" },
+        { title: "Home", description: "Main page", url: "index.html", badge: "Home" },
+        { title: "About", description: "About DU Matrix", url: "about.html", badge: "Info" },
+        { title: "Contact", description: "Get in touch", url: "contact.html", badge: "Info" }
     ];
-    const input = document.getElementById("searchInput");
-    const results = document.getElementById("searchResults");
-    if (input && results) {
+
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    if (searchInput && searchResults) {
         if (typeof Fuse === "undefined") {
-            const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"; s.onload = initSearch; document.head.appendChild(s);
+            const s = document.createElement("script");
+            s.src = "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js";
+            s.onload = initSearch;
+            document.head.appendChild(s);
         } else initSearch();
+
         function initSearch() {
-            const fuse = new Fuse(searchData, { keys: ["title", "desc"], threshold: 0.3 });
-            input.addEventListener("input", function () {
-                if (this.value.trim().length < 2) { results.innerHTML = ""; return; }
+            const fuse = new Fuse(searchData, { keys: ["title", "description"], threshold: 0.3, includeScore: true });
+            searchInput.addEventListener("input", function () {
+                const query = this.value.trim();
+                if (query.length < 2) { searchResults.innerHTML = ""; return; }
                 let html = "";
-                fuse.search(this.value.trim()).slice(0, 5).forEach(({ item }) => {
-                    html += `<a href="${item.url}" class="search-result-item"><div>${item.title} <span class="badge">${item.badge}</span></div></a>`;
+                fuse.search(query).slice(0, 8).forEach(({ item }) => {
+                    html += `<a href="${item.url}" class="search-result-item"><div><strong>${item.title}</strong> <span class="badge">${item.badge}</span></div></a>`;
                 });
-                results.innerHTML = html;
+                searchResults.innerHTML = html;
             });
         }
     }
