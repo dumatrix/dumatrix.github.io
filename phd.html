@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhD Mathematics | DU Matrix</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav class="container">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <a href="index.html" class="logo">
-                <img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" style="height: 45px; width: auto; object-fit: contain; display: block;">
-                <span>DU Matrix</span>
-            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"><span></span><span></span><span></span></button>
+            <a href="index.html" class="logo"><img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;"><span>DU Matrix</span></a>
             <div class="nav-links" id="navLinks">
                 <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
                 <a href="index.html">Home</a>
@@ -29,11 +20,12 @@
                 <a href="phd.html" class="active">Ph.D Math</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-right">
                 <div class="search-container">
                     <span class="search-icon">🔍</span>
                     <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
                     <div id="searchResults" class="search-results"></div>
-                </div>
                 </div>
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
             </div>
@@ -41,76 +33,44 @@
         </nav>
     </header>
     <main class="container">
-        <section class="page-header">
-            <h1>PhD Mathematics Resources</h1>
-            <p>Advanced study materials, research topics, and coursework notes.</p>
-        </section>
+        <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Ph.D Math</nav>
+        <section class="page-header"><h1>PhD Mathematics Resources</h1><p>Advanced study materials, research topics, and coursework notes.</p></section>
         <section class="cards-grid">
+            <div class="card"><h2>Advanced Algebra</h2><p class="card-update">📅 Updated: 20 Aug 2026</p><p>Galois theory, module theory, commutative algebra.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Functional Analysis</h2><p class="card-update">📅 Updated: 18 Aug 2026</p><p>Banach spaces, Hilbert spaces, operator theory.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Topology</h2><p class="card-update">📅 Updated: 15 Aug 2026</p><p>Point-set topology, algebraic topology.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Research Methodology</h2><p class="card-update">📅 Updated: 10 Aug 2026</p><p>Paper writing, LaTeX, research tools.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Coming Soon</span></div>
         </section>
-        <!-- Request Notes Form – no separate subject box -->
-        <section style="margin-top: 50px; border-top: 1px solid #30363d; padding-top: 30px;">
-            <h2 style="text-align: center; color: var(--text-heading); margin-bottom: 8px;">📚 Can't find the notes you need?</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 25px;">Fill out the form below – we'll try our best to locate them for you.</p>
-            <div style="max-width: 600px; margin: 0 auto;">
-                <form id="requestFormPhD" style="display: flex; flex-direction: column; gap: 16px; background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <div>
-                        <label for="reqNamePhD" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your Name</label>
-                        <input type="text" id="reqNamePhD" name="name" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);">
-                    </div>
-                    <div>
-                        <label for="reqEmailPhD" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Your Email</label>
-                        <input type="email" id="reqEmailPhD" name="email" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary);">
-                    </div>
-                    <div>
-                        <label for="reqMessagePhD" style="display: block; margin-bottom: 4px; color: var(--text-heading); font-weight: 500;">Topic / Subject and details</label>
-                        <textarea id="reqMessagePhD" name="message" rows="4" required style="width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); resize: vertical;"></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="align-self: center; padding: 12px 40px; font-size: 1rem;">Send Request</button>
-                    <div id="statusPhD" style="text-align: center; margin-top: 8px; display: none;"></div>
-                </form>
-            </div>
+        <section class="form-section">
+            <h2>📚 Can't find the notes you need?</h2><p>Fill out the form below – we'll try our best to locate them for you.</p>
+            <form id="requestFormPhD" class="inline-form">
+                <input type="text" id="reqNamePhD" placeholder="Your Name" required>
+                <input type="email" id="reqEmailPhD" placeholder="Your Email" required>
+                <textarea id="reqMessagePhD" rows="4" placeholder="Topic / Subject and details" required></textarea>
+                <button type="submit" class="btn">Send Request</button>
+                <div id="statusPhD" class="form-status"></div>
+            </form>
         </section>
     </main>
+    <footer><div class="container"><p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p></div></footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('requestFormPhD');
-            const status = document.getElementById('statusPhD');
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    status.style.display = 'block';
-                    status.textContent = 'Sending...';
-                    status.style.color = '#8b949e';
-                    const formData = {
-                        name: document.getElementById('reqNamePhD').value.trim(),
-                        email: document.getElementById('reqEmailPhD').value.trim(),
-                        message: document.getElementById('reqMessagePhD').value.trim()
-                    };
-                    fetch(scriptURL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                    })
-                    .then(() => {
-                        status.textContent = '✅ Request sent! We\'ll get back to you soon.';
-                        status.style.color = '#2ea043';
-                        form.reset();
-                    })
-                    .catch(() => {
-                        status.textContent = '❌ Failed to send. Please try again.';
-                        status.style.color = '#f85149';
-                    });
-                });
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('requestFormPhD');
+        const status = document.getElementById('statusPhD');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                status.textContent = 'Sending...'; status.style.color = '#8b949e';
+                const formData = { name: document.getElementById('reqNamePhD').value.trim(), email: document.getElementById('reqEmailPhD').value.trim(), message: document.getElementById('reqMessagePhD').value.trim() };
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                .then(() => { status.textContent = '✅ Request sent!'; status.style.color = '#2ea043'; form.reset(); })
+                .catch(() => { status.textContent = '❌ Failed. Please try again.'; status.style.color = '#f85149'; });
+            });
+        }
+    });
     </script>
-    <footer>
-        <div class="container">
-            <p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p>
-        </div>
-    </footer>
 </body>
 </html>

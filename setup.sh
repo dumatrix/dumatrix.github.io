@@ -32,13 +32,15 @@ cat > index.html << 'HTML'
                 <a href="phd.html">Ph.D Math</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-right">
                 <div class="search-container">
                     <span class="search-icon">🔍</span>
                     <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
                     <div id="searchResults" class="search-results"></div>
                 </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
             </div>
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
             <div class="nav-overlay" id="navOverlay"></div>
         </nav>
     </header>
@@ -106,7 +108,7 @@ cat > index.html << 'HTML'
 HTML
 
 # ---------------------------
-# bsc-math.html
+# bsc-math.html (similar structure with nav-right)
 # ---------------------------
 cat > bsc-math.html << 'HTML'
 <!DOCTYPE html>
@@ -131,9 +133,15 @@ cat > bsc-math.html << 'HTML'
                 <a href="phd.html">Ph.D Math</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <div class="search-container"><span class="search-icon">🔍</span><input type="text" id="searchInput" class="search-input" placeholder="Search notes..."><div id="searchResults" class="search-results"></div></div>
             </div>
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <div class="nav-right">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
             <div class="nav-overlay" id="navOverlay"></div>
         </nav>
     </header>
@@ -183,10 +191,333 @@ cat > bsc-math.html << 'HTML'
 </html>
 HTML
 
-# ... (repeat for msc-math, phd, about, contact similarly)
+# ---------------------------
+# msc-math.html (similar)
+# ---------------------------
+cat > msc-math.html << 'HTML'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.Sc. Math | DU Matrix</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"><span></span><span></span><span></span></button>
+            <a href="index.html" class="logo"><img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;"><span>DU Matrix</span></a>
+            <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+                <a href="index.html">Home</a>
+                <a href="bsc-math.html">B.Sc. Math</a>
+                <a href="msc-math.html" class="active">M.Sc. Math</a>
+                <a href="phd.html">Ph.D Math</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </nav>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> M.Sc. Math</nav>
+        <section class="page-header"><h1>M.Sc. Math Notes</h1><p>Subject study materials.</p></section>
+        <section class="cards-grid">
+            <div class="card"><h2>Field Theory</h2><p class="card-update">📅 Updated: 25 Aug 2026</p><p>Complete notes and solved problems.</p><a href="https://mega.nz/file/tnIGCBiR#8q-n-6fLBFrbM5m6pzRH73NpDfWMYKuRN1LP-jF72vo" class="btn" target="_blank" rel="noopener noreferrer">📥 Download Notes</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Real Analysis</h2><p class="card-update">📅 Updated: 22 Aug 2026</p><p>Lecture notes and reference material.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Coming Soon</span></div>
+        </section>
+        <section class="form-section">
+            <h2>📚 Can't find the notes you need?</h2><p>Fill out the form below – we'll try our best to locate them for you.</p>
+            <form id="requestFormMSc" class="inline-form">
+                <input type="text" id="reqNameMSc" placeholder="Your Name" required>
+                <input type="email" id="reqEmailMSc" placeholder="Your Email" required>
+                <textarea id="reqMessageMSc" rows="4" placeholder="Topic / Subject and details" required></textarea>
+                <button type="submit" class="btn">Send Request</button>
+                <div id="statusMSc" class="form-status"></div>
+            </form>
+        </section>
+    </main>
+    <footer><div class="container"><p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p></div></footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('requestFormMSc');
+        const status = document.getElementById('statusMSc');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                status.textContent = 'Sending...'; status.style.color = '#8b949e';
+                const formData = { name: document.getElementById('reqNameMSc').value.trim(), email: document.getElementById('reqEmailMSc').value.trim(), message: document.getElementById('reqMessageMSc').value.trim() };
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                .then(() => { status.textContent = '✅ Request sent!'; status.style.color = '#2ea043'; form.reset(); })
+                .catch(() => { status.textContent = '❌ Failed. Please try again.'; status.style.color = '#f85149'; });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+HTML
 
 # ---------------------------
-# style.css (unchanged colors, improved responsiveness)
+# phd.html (similar)
+# ---------------------------
+cat > phd.html << 'HTML'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhD Mathematics | DU Matrix</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"><span></span><span></span><span></span></button>
+            <a href="index.html" class="logo"><img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;"><span>DU Matrix</span></a>
+            <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+                <a href="index.html">Home</a>
+                <a href="bsc-math.html">B.Sc. Math</a>
+                <a href="msc-math.html">M.Sc. Math</a>
+                <a href="phd.html" class="active">Ph.D Math</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </nav>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Ph.D Math</nav>
+        <section class="page-header"><h1>PhD Mathematics Resources</h1><p>Advanced study materials, research topics, and coursework notes.</p></section>
+        <section class="cards-grid">
+            <div class="card"><h2>Advanced Algebra</h2><p class="card-update">📅 Updated: 20 Aug 2026</p><p>Galois theory, module theory, commutative algebra.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Functional Analysis</h2><p class="card-update">📅 Updated: 18 Aug 2026</p><p>Banach spaces, Hilbert spaces, operator theory.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Topology</h2><p class="card-update">📅 Updated: 15 Aug 2026</p><p>Point-set topology, algebraic topology.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Available</span></div>
+            <div class="card"><h2>Research Methodology</h2><p class="card-update">📅 Updated: 10 Aug 2026</p><p>Paper writing, LaTeX, research tools.</p><a href="https://drive.google.com/your-link" class="btn" target="_blank" rel="noopener noreferrer">📥 Download</a><span class="badge">Coming Soon</span></div>
+        </section>
+        <section class="form-section">
+            <h2>📚 Can't find the notes you need?</h2><p>Fill out the form below – we'll try our best to locate them for you.</p>
+            <form id="requestFormPhD" class="inline-form">
+                <input type="text" id="reqNamePhD" placeholder="Your Name" required>
+                <input type="email" id="reqEmailPhD" placeholder="Your Email" required>
+                <textarea id="reqMessagePhD" rows="4" placeholder="Topic / Subject and details" required></textarea>
+                <button type="submit" class="btn">Send Request</button>
+                <div id="statusPhD" class="form-status"></div>
+            </form>
+        </section>
+    </main>
+    <footer><div class="container"><p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p></div></footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('requestFormPhD');
+        const status = document.getElementById('statusPhD');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                status.textContent = 'Sending...'; status.style.color = '#8b949e';
+                const formData = { name: document.getElementById('reqNamePhD').value.trim(), email: document.getElementById('reqEmailPhD').value.trim(), message: document.getElementById('reqMessagePhD').value.trim() };
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                .then(() => { status.textContent = '✅ Request sent!'; status.style.color = '#2ea043'; form.reset(); })
+                .catch(() => { status.textContent = '❌ Failed. Please try again.'; status.style.color = '#f85149'; });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+HTML
+
+# ---------------------------
+# about.html (similar)
+# ---------------------------
+cat > about.html << 'HTML'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | DU Matrix</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"><span></span><span></span><span></span></button>
+            <a href="index.html" class="logo"><img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;"><span>DU Matrix</span></a>
+            <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+                <a href="index.html">Home</a>
+                <a href="bsc-math.html">B.Sc. Math</a>
+                <a href="msc-math.html">M.Sc. Math</a>
+                <a href="phd.html">Ph.D Math</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </nav>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> About</nav>
+        <section class="page-header"><h1>About DU Matrix</h1><p>A fun passion project built by a curious Delhi University student.</p></section>
+        <section class="cards-grid">
+            <div class="card"><h2>The Story</h2><p>DU Matrix was built by a curious Delhi University student driven by a passion for exploring new concepts, learning web development, and creating helpful tools. Built purely for fun, this site serves as a central hub for academic learning.</p></div>
+            <div class="card"><h2>What You Can Do Here</h2><p>You can easily browse, read, and download curated lecture notes, study materials, and subject resources for B.Sc., M.Sc. Math, and PhD research topics—all in one clean, distraction-free environment.</p></div>
+            <div class="card"><h2>Share Your Ideas</h2><p>Since this project is continuously evolving, your feedback is super valuable! Have suggestions for new topics, features, or improvements? Feel free to share your ideas on what we should add next.</p><span class="badge">Ideas & Feedback Welcome</span></div>
+        </section>
+        <section class="form-section">
+            <h2>💬 Have a suggestion or question?</h2><p>We'd love to hear your ideas – drop us a message below.</p>
+            <form id="suggestionForm" class="inline-form">
+                <input type="text" id="sugName" placeholder="Your Name" required>
+                <input type="email" id="sugEmail" placeholder="Your Email" required>
+                <textarea id="sugMessage" rows="4" placeholder="Your message / suggestion" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+                <div id="statusSug" class="form-status"></div>
+            </form>
+        </section>
+    </main>
+    <footer><div class="container"><p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p></div></footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('suggestionForm');
+        const status = document.getElementById('statusSug');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                status.textContent = 'Sending...'; status.style.color = '#8b949e';
+                const formData = { name: document.getElementById('sugName').value.trim(), email: document.getElementById('sugEmail').value.trim(), message: document.getElementById('sugMessage').value.trim() };
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                .then(() => { status.textContent = '✅ Message sent!'; status.style.color = '#2ea043'; form.reset(); })
+                .catch(() => { status.textContent = '❌ Failed. Please try again.'; status.style.color = '#f85149'; });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+HTML
+
+# ---------------------------
+# contact.html (similar)
+# ---------------------------
+cat > contact.html << 'HTML'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | DU Matrix</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation"><span></span><span></span><span></span></button>
+            <a href="index.html" class="logo"><img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;"><span>DU Matrix</span></a>
+            <div class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
+                <a href="index.html">Home</a>
+                <a href="bsc-math.html">B.Sc. Math</a>
+                <a href="msc-math.html">M.Sc. Math</a>
+                <a href="phd.html">Ph.D Math</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+            <div class="nav-right">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </nav>
+    </header>
+    <main class="container">
+        <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Contact</nav>
+        <section class="page-header"><h1>Contact Us</h1><p>We'd love to hear from you! Fill out the form below or reach us via social channels.</p></section>
+        <section class="cards-grid" style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto 30px;">
+            <div class="card">
+                <form id="contactForm" class="inline-form">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" rows="5" placeholder="Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </section>
+        <section class="cards-grid">
+            <div class="card"><h2>📧 Gmail</h2><p><a href="mailto:dumatrix.du@gmail.com" style="color: #58a6ff; text-decoration: none;">dumatrix.du@gmail.com</a></p><span class="badge">Email</span></div>
+            <div class="card"><h2>🧵 Reddit</h2><p><a href="https://www.reddit.com/r/du_matrix" target="_blank" rel="noopener noreferrer" style="color: #58a6ff; text-decoration: none;">r/du_matrix</a></p><span class="badge">Subreddit</span></div>
+            <div class="card"><h2>📸 Instagram</h2><p><a href="https://www.instagram.com/du_matrix/" target="_blank" rel="noopener noreferrer" style="color: #58a6ff; text-decoration: none;">@du_matrix</a></p><span class="badge">Instagram</span></div>
+        </section>
+    </main>
+    <footer><div class="container"><p>&copy; DU Matrix. All rights reserved. | Updated: 25 Aug 2026</p></div></footer>
+    <button id="scrollTopBtn" class="scroll-top">↑</button>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxADJYnyatKzZKadcZBG10PDP8m52ImM2yMIr4pKhssbwTVg7XYck3R-8tWigdklNMXIg/exec';
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                status.textContent = 'Sending...'; status.style.color = '#8b949e';
+                const formData = { name: document.getElementById('name').value.trim(), email: document.getElementById('email').value.trim(), message: document.getElementById('message').value.trim() };
+                fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+                .then(() => { status.textContent = '✅ Message sent successfully!'; status.style.color = '#2ea043'; form.reset(); })
+                .catch(() => { status.textContent = '❌ Failed. Please try again.'; status.style.color = '#f85149'; });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+HTML
+
+# ---------------------------
+# style.css (with nav-right, smooth animations, same colors)
 # ---------------------------
 cat > style.css << 'CSS'
 :root {
@@ -204,6 +535,7 @@ cat > style.css << 'CSS'
   --badge-border: #30363d;
   --shadow: rgba(0, 0, 0, 0.5);
 }
+
 [data-theme="light"] {
   --bg-primary: #ffffff;
   --bg-secondary: #f6f8fa;
@@ -219,158 +551,730 @@ cat > style.css << 'CSS'
   --badge-border: #d0d7de;
   --shadow: rgba(0, 0, 0, 0.1);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Playfair Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-body { background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; transition: background-color 0.3s ease, color 0.3s ease; }
-.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; width: 100%; }
-header { background-color: var(--bg-secondary); border-bottom: 1px solid var(--border-color); padding: 14px 0; position: sticky; top: 0; z-index: 100; transition: background-color 0.3s ease, border-color 0.3s ease; }
-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.3rem; font-weight: bold; color: var(--accent); text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
-.menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; background: transparent; border: none; cursor: pointer; padding: 0; }
-.menu-toggle span { width: 100%; height: 2.5px; background-color: var(--accent); border-radius: 2px; }
-.close-btn { display: none; }
-.nav-links { display: flex; align-items: center; gap: 20px; }
-.nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; white-space: nowrap; transition: color 0.2s ease; }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
-.theme-toggle { background: transparent; border: none; cursor: pointer; font-size: 1.4rem; padding: 4px 10px; border-radius: 6px; color: var(--text-secondary); transition: background 0.2s, color 0.2s; line-height: 1; }
-.theme-toggle:hover { background: var(--border-color); color: var(--text-heading); }
-@media (max-width: 768px) {
-  .menu-toggle { display: flex; }
-  .nav-links { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; background-color: var(--bg-secondary); border-right: 1px solid var(--border-color); flex-direction: column; align-items: flex-start; padding: 65px 25px 25px 25px; gap: 22px; transform: translateX(-100%); transition: transform 0.3s ease-in-out; z-index: 1001; box-shadow: 4px 0 15px var(--shadow); overflow-y: auto; }
-  .nav-links.open { transform: translateX(0); }
-  .nav-links a { font-size: 1.05rem; width: 100%; padding: 6px 0; border-bottom: 1px solid var(--border-color); }
-  .close-btn { display: block; position: absolute; top: 15px; right: 18px; background: none; border: none; color: var(--text-secondary); font-size: 1.8rem; cursor: pointer; line-height: 1; }
-  .nav-overlay { display: block; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.65); opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out; z-index: 1000; }
-  .nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-main { flex: 1; padding: 30px 0; }
-.hero { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%); border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border-color); }
-.hero h1 { font-size: 2.2rem; color: var(--text-heading); margin-bottom: 8px; }
-.hero-sub { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 25px; }
-.hero-cta { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--accent);
+  border-radius: 2px;
+  transition: transform 0.3s;
+}
+
+.close-btn {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  background: var(--border-color);
+  color: var(--text-heading);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  padding: 8px 0;
+}
+
+.breadcrumb a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  margin: 0 6px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+  border-radius: 12px;
+  margin-bottom: 40px;
+  border: 1px solid var(--border-color);
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background-color: var(--btn-bg);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  align-self: flex-start;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
 .btn-primary { background: var(--btn-bg); color: #fff; }
 .btn-secondary { background: var(--bg-primary); border: 1px solid var(--accent); color: var(--accent); }
 .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); }
-.btn { display: inline-block; background-color: var(--btn-bg); color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; align-self: flex-start; transition: background 0.2s; }
-.btn:hover { background-color: var(--btn-hover); }
-.card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s, background-color 0.3s ease; }
-.card:hover { transform: translateY(-4px); border-color: var(--accent); }
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 10px; }
-.badge { display: inline-block; background-color: var(--badge-bg); color: var(--text-secondary); border: 1px solid var(--badge-border); padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; align-self: flex-start; margin-top: 4px; }
-footer { background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); padding: 18px 0; text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 30px; transition: background-color 0.3s ease, border-color 0.3s ease; }
-.breadcrumb { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding: 8px 0; }
-.breadcrumb a { color: var(--accent); text-decoration: none; }
-.breadcrumb span { margin: 0 6px; color: var(--text-secondary); }
-.search-container { position: relative; display: inline-block; }
-.search-input { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 12px 6px 32px; color: var(--text-primary); font-size: 0.9rem; width: 160px; transition: width 0.3s ease, border-color 0.2s; }
-.search-input:focus { outline: none; border-color: var(--accent); width: 220px; }
-.search-icon { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); pointer-events: none; font-size: 0.9rem; }
-.search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; max-height: 300px; overflow-y: auto; display: none; z-index: 1000; box-shadow: 0 8px 24px var(--shadow); padding: 4px 0; }
-.search-results.active { display: block; }
-.search-result-item { padding: 10px 16px; display: block; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border-color); transition: background 0.15s; }
-.search-result-item:hover { background: var(--bg-primary); }
-.form-section { margin-top: 50px; border-top: 1px solid #30363d; padding-top: 30px; text-align: center; }
-.inline-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color); }
-.inline-form input, .inline-form textarea { width: 100%; padding: 10px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); font-family: inherit; }
-.form-status { text-align: center; margin-top: 8px; display: none; }
-.scroll-top { position: fixed; bottom: 25px; right: 25px; background: var(--accent); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; display: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-.scroll-top.visible { display: block; }
-@media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 1.8rem; } }
+
+/* Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, border-color 0.2s, background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.card-update {
+  font-size: 0.75rem !important;
+  color: var(--text-secondary) !important;
+  margin: 4px 0 8px 0 !important;
+  opacity: 0.8;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--badge-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--badge-border);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* Forms */
+.form-section {
+  margin-top: 50px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 30px;
+  text-align: center;
+}
+
+.form-section h2 {
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.form-section p {
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.inline-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-card);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.inline-form input,
+.inline-form textarea {
+  width: 100%;
+  padding: 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.inline-form input:focus,
+.inline-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-status {
+  text-align: center;
+  margin-top: 8px;
+  display: none;
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 18px 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 30px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Scroll to top */
+.scroll-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.scroll-top.visible {
+  display: block;
+}
+
+.scroll-top:hover {
+  transform: scale(1.1);
+}
+
+/* Search */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px 12px 6px 32px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  width: 160px;
+  transition: width 0.3s ease, border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  width: 220px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 8px 24px var(--shadow);
+  padding: 4px 0;
+}
+
+.search-results.active {
+  display: block;
+}
+
+.search-result-item {
+  padding: 10px 16px;
+  display: block;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: var(--bg-primary);
+}
+
+.search-result-item .result-title {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.search-result-item .result-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.search-result-item .result-badge {
+  font-size: 0.7rem;
+  background: var(--badge-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--badge-border);
+  padding: 1px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+/* Mobile Drawer */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 65px 25px 25px 25px;
+    gap: 22px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1001;
+    box-shadow: 4px 0 15px var(--shadow);
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 1.05rem;
+    width: 100%;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .close-btn:hover {
+    color: var(--text-heading);
+  }
+
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile search */
+  .search-input {
+    width: 100%;
+  }
+  .search-input:focus {
+    width: 100%;
+  }
+  .search-results {
+    position: static;
+    max-height: 200px;
+    margin-top: 4px;
+  }
+
+  /* Mobile grid */
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Desktop adjustments */
+@media (min-width: 769px) {
+  .nav-links {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .search-input {
+    width: 140px;
+  }
+  .search-input:focus {
+    width: 180px;
+  }
+  .theme-toggle {
+    font-size: 1.2rem;
+    padding: 2px 8px;
+  }
+}
 CSS
 
 # ---------------------------
-# script.js (with scroll-top, updated search index, drawer)
+# script.js
 # ---------------------------
 cat > script.js << 'JS'
 document.addEventListener("DOMContentLoaded", () => {
+    // ---------- MOBILE DRAWER ----------
     const menuToggle = document.getElementById("menuToggle");
     const closeBtn = document.getElementById("closeBtn");
     const navLinks = document.getElementById("navLinks");
     const navOverlay = document.getElementById("navOverlay");
-    function openMenu() { navLinks?.classList.add("open"); navOverlay?.classList.add("open"); document.body.style.overflow = "hidden"; }
-    function closeMenu() { navLinks?.classList.remove("open"); navOverlay?.classList.remove("open"); document.body.style.overflow = ""; }
+
+    function openMenu() {
+        navLinks?.classList.add("open");
+        navOverlay?.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+        navLinks?.classList.remove("open");
+        navOverlay?.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
     if (menuToggle) menuToggle.addEventListener("click", openMenu);
     if (closeBtn) closeBtn.addEventListener("click", closeMenu);
     if (navOverlay) navOverlay.addEventListener("click", closeMenu);
+
+    // Auto-open on first mobile visit
     const isMobile = window.innerWidth <= 768;
     const hasVisited = localStorage.getItem("du_matrix_visited");
-    if (isMobile && !hasVisited) { setTimeout(() => { openMenu(); localStorage.setItem("du_matrix_visited", "true"); }, 400); }
+    if (isMobile && !hasVisited) {
+        setTimeout(() => {
+            openMenu();
+            localStorage.setItem("du_matrix_visited", "true");
+        }, 400);
+    }
 
-    // Theme toggle
+    // ---------- THEME TOGGLE ----------
     const themeToggle = document.getElementById("themeToggle");
     const htmlElement = document.documentElement;
+
     const storedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (storedTheme) htmlElement.setAttribute("data-theme", storedTheme);
-    else if (prefersDark) { htmlElement.setAttribute("data-theme", "dark"); localStorage.setItem("theme", "dark"); }
-    else { htmlElement.setAttribute("data-theme", "light"); localStorage.setItem("theme", "light"); }
-    function updateToggleIcon() { if (themeToggle) themeToggle.textContent = htmlElement.getAttribute("data-theme") === "dark" ? "🌙" : "☀️"; }
-    if (themeToggle) themeToggle.addEventListener("click", () => {
-        const newTheme = htmlElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        htmlElement.setAttribute("data-theme", newTheme); localStorage.setItem("theme", newTheme); updateToggleIcon();
-    });
+
+    if (storedTheme) {
+        htmlElement.setAttribute("data-theme", storedTheme);
+    } else if (prefersDark) {
+        htmlElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+    } else {
+        htmlElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+    }
+
+    function updateToggleIcon() {
+        if (themeToggle) {
+            const currentTheme = htmlElement.getAttribute("data-theme");
+            themeToggle.textContent = currentTheme === "dark" ? "🌙" : "☀️";
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = htmlElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            htmlElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            updateToggleIcon();
+        });
+    }
     updateToggleIcon();
 
-    // Search
+    // ---------- SCROLL TO TOP ----------
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("visible");
+            } else {
+                scrollTopBtn.classList.remove("visible");
+            }
+        });
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    // ---------- SEARCH ----------
     const searchData = [
-        { title: "Calculus & Real Analysis", description: "Limits, continuity, multivariable calculus", url: "bsc-math.html", badge: "B.Sc." },
+        // B.Sc.
+        { title: "Calculus & Real Analysis", description: "Limits, continuity, multivariable calculus, real sequences", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Linear Algebra", description: "Vector spaces, matrices, eigenvalues", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Abstract Algebra", description: "Groups, rings, fields", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Differential Equations", description: "ODE, PDE", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Numerical Methods", description: "Root finding, interpolation", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Mechanics", description: "Statics, dynamics", url: "bsc-math.html", badge: "B.Sc." },
+        // M.Sc.
         { title: "Field Theory", description: "Complete notes and solved problems", url: "msc-math.html", badge: "M.Sc." },
         { title: "Real Analysis", description: "Lecture notes", url: "msc-math.html", badge: "M.Sc." },
         { title: "Abstract Algebra", description: "Group theory, ring theory", url: "msc-math.html", badge: "M.Sc." },
         { title: "Topology", description: "Point-set topology", url: "msc-math.html", badge: "M.Sc." },
+        // PhD
         { title: "Advanced Algebra", description: "Galois theory, modules", url: "phd.html", badge: "Ph.D" },
         { title: "Functional Analysis", description: "Banach spaces, operators", url: "phd.html", badge: "Ph.D" },
+        { title: "Topology", description: "Algebraic topology", url: "phd.html", badge: "Ph.D" },
         { title: "Research Methodology", description: "Paper writing, LaTeX", url: "phd.html", badge: "Ph.D" },
+        // Pages
         { title: "Home", description: "Main page", url: "index.html", badge: "Home" },
         { title: "About", description: "About DU Matrix", url: "about.html", badge: "Info" },
-        { title: "Contact", description: "Get in touch", url: "contact.html", badge: "Info" }
+        { title: "Contact", description: "Get in touch", url: "contact.html", badge: "Info" },
     ];
+
     const searchInput = document.getElementById("searchInput");
     const searchResults = document.getElementById("searchResults");
+
     if (searchInput && searchResults) {
         if (typeof Fuse === "undefined") {
             const fuseScript = document.createElement("script");
             fuseScript.src = "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js";
             fuseScript.onload = () => initSearch();
             document.head.appendChild(fuseScript);
-        } else initSearch();
+        } else {
+            initSearch();
+        }
+
         function initSearch() {
-            const fuse = new Fuse(searchData, { keys: ["title", "description"], threshold: 0.3, includeScore: true });
-            searchInput.addEventListener("input", function () {
+            const fuse = new Fuse(searchData, {
+                keys: ["title", "description"],
+                threshold: 0.3,
+                includeScore: true,
+            });
+
+            searchInput.addEventListener("input", function() {
                 const query = this.value.trim();
-                if (query.length < 2) { searchResults.classList.remove("active"); return; }
+                if (query.length < 2) {
+                    searchResults.classList.remove("active");
+                    return;
+                }
                 const results = fuse.search(query);
                 renderResults(results);
             });
-            document.addEventListener("click", (e) => { if (!e.target.closest(".search-container")) searchResults.classList.remove("active"); });
+
+            document.addEventListener("click", function(e) {
+                if (!e.target.closest(".search-container")) {
+                    searchResults.classList.remove("active");
+                }
+            });
+
             function renderResults(results) {
-                if (results.length === 0) { searchResults.innerHTML = `<div class="search-result-item" style="color: var(--text-secondary); cursor: default;">No results found</div>`; searchResults.classList.add("active"); return; }
+                if (results.length === 0) {
+                    searchResults.innerHTML = `<div class="search-result-item" style="color: var(--text-secondary); cursor: default;">No results found</div>`;
+                    searchResults.classList.add("active");
+                    return;
+                }
                 let html = "";
-                results.slice(0, 8).forEach(({ item }) => { html += `<a href="${item.url}" class="search-result-item"><div class="result-title">${item.title} <span class="result-badge">${item.badge}</span></div><div class="result-desc">${item.description}</div></a>`; });
-                searchResults.innerHTML = html; searchResults.classList.add("active");
+                results.slice(0, 8).forEach(({ item }) => {
+                    html += `
+                        <a href="${item.url}" class="search-result-item">
+                            <div class="result-title">${item.title} <span class="result-badge">${item.badge}</span></div>
+                            <div class="result-desc">${item.description}</div>
+                        </a>
+                    `;
+                });
+                searchResults.innerHTML = html;
+                searchResults.classList.add("active");
             }
         }
-    }
-
-    // Scroll to top button
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    if (scrollTopBtn) {
-        window.addEventListener("scroll", () => { if (window.scrollY > 300) scrollTopBtn.classList.add("visible"); else scrollTopBtn.classList.remove("visible"); });
-        scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     }
 });
 JS
 
-# Add .nojekyll to prevent Jekyll processing
+# Add .nojekyll
 touch .nojekyll
 
 # Git operations
 git add .
-git commit -m "Optimized website: responsive, smooth animations, improved performance"
+git commit -m "Optimized website: responsive, smooth animations, theme toggle next to search bar, improved search"
 git push origin main
 
-echo "✅ Done! Changes pushed to GitHub."
+echo "✅ All done! Changes pushed to GitHub."
