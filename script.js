@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ---------- MOBILE DRAWER ----------
+    // Mobile drawer
     const menuToggle = document.getElementById("menuToggle");
     const closeBtn = document.getElementById("closeBtn");
     const navLinks = document.getElementById("navLinks");
@@ -31,7 +31,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 400);
     }
 
-    // ---------- SCROLL TO TOP ----------
+    // Search toggle (icon opens search box)
+    const searchToggle = document.getElementById("searchToggle");
+    const searchBox = document.querySelector(".search-box");
+    if (searchToggle && searchBox) {
+        searchToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            searchBox.classList.toggle("hidden");
+            if (!searchBox.classList.contains("hidden")) {
+                document.getElementById("searchInput").focus();
+            }
+        });
+
+        // Close when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".search-container") && !searchBox.classList.contains("hidden")) {
+                searchBox.classList.add("hidden");
+            }
+        });
+    }
+
+    // Scroll to top
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     if (scrollTopBtn) {
         window.addEventListener("scroll", () => {
@@ -46,29 +66,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ---------- SEARCH ----------
+    // Search functionality
     const searchData = [
-        // B.Sc.
-        { title: "Calculus & Real Analysis", description: "Limits, continuity, multivariable calculus, real sequences", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Calculus & Real Analysis", description: "Limits, continuity, multivariable calculus", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Linear Algebra", description: "Vector spaces, matrices, eigenvalues", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Abstract Algebra", description: "Groups, rings, fields", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Differential Equations", description: "ODE, PDE", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Numerical Methods", description: "Root finding, interpolation", url: "bsc-math.html", badge: "B.Sc." },
         { title: "Mechanics", description: "Statics, dynamics", url: "bsc-math.html", badge: "B.Sc." },
-        // M.Sc.
-        { title: "Field Theory", description: "Complete notes and solved problems", url: "msc-math.html", badge: "M.Sc." },
+        { title: "Field Theory", description: "Complete notes", url: "msc-math.html", badge: "M.Sc." },
         { title: "Real Analysis", description: "Lecture notes", url: "msc-math.html", badge: "M.Sc." },
         { title: "Abstract Algebra", description: "Group theory, ring theory", url: "msc-math.html", badge: "M.Sc." },
         { title: "Topology", description: "Point-set topology", url: "msc-math.html", badge: "M.Sc." },
-        // PhD
-        { title: "Advanced Algebra", description: "Galois theory, modules", url: "phd.html", badge: "Ph.D" },
+        { title: "Advanced Algebra", description: "Galois theory", url: "phd.html", badge: "Ph.D" },
         { title: "Functional Analysis", description: "Banach spaces, operators", url: "phd.html", badge: "Ph.D" },
-        { title: "Topology", description: "Algebraic topology", url: "phd.html", badge: "Ph.D" },
-        { title: "Research Methodology", description: "Paper writing, LaTeX", url: "phd.html", badge: "Ph.D" },
-        // Pages
+        { title: "Research Methodology", description: "Paper writing", url: "phd.html", badge: "Ph.D" },
         { title: "Home", description: "Main page", url: "index.html", badge: "Home" },
         { title: "About", description: "About DU Matrix", url: "about.html", badge: "Info" },
-        { title: "Contact", description: "Get in touch", url: "contact.html", badge: "Info" },
+        { title: "Contact", description: "Get in touch", url: "contact.html", badge: "Info" }
     ];
 
     const searchInput = document.getElementById("searchInput");
@@ -85,51 +100,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function initSearch() {
-            const fuse = new Fuse(searchData, {
-                keys: ["title", "description"],
-                threshold: 0.3,
-                includeScore: true,
-            });
+            const fuse = new Fuse(searchData, { keys: ["title", "description"], threshold: 0.3, includeScore: true });
 
             searchInput.addEventListener("input", function() {
                 const query = this.value.trim();
                 if (query.length < 2) {
-                    searchResults.classList.remove("active");
+                    searchResults.innerHTML = "";
                     return;
                 }
                 const results = fuse.search(query);
-                renderResults(results);
-            });
-
-            document.addEventListener("click", function(e) {
-                if (!e.target.closest(".search-container")) {
-                    searchResults.classList.remove("active");
-                }
-            });
-
-            function renderResults(results) {
-                if (results.length === 0) {
-                    searchResults.innerHTML = `<div class="search-result-item" style="color: var(--text-secondary); cursor: default;">No results found</div>`;
-                    searchResults.classList.add("active");
-                    return;
-                }
                 let html = "";
                 results.slice(0, 8).forEach(({ item }) => {
-                    html += `
-                        <a href="${item.url}" class="search-result-item">
-                            <div class="result-title">${item.title} <span class="result-badge">${item.badge}</span></div>
-                            <div class="result-desc">${item.description}</div>
-                        </a>
-                    `;
+                    html += `<a href="${item.url}" class="search-result-item"><div>${item.title} <span class="badge">${item.badge}</span></div></a>`;
                 });
                 searchResults.innerHTML = html;
-                searchResults.classList.add("active");
-            }
+            });
         }
     }
-
-    // Force dark theme (set data-theme to dark on <html>)
-    document.documentElement.setAttribute("data-theme", "dark");
-    // Optionally save to localStorage so it persists
-    localStorage.setItem("theme", "dark");
 });
