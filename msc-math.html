@@ -9,15 +9,13 @@
 </head>
 <body>
     <header>
-        <nav class="container">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-                <span></span><span></span><span></span>
-            </button>
-            <a href="index.html" class="logo">
-                <img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;">
-                <span>DU Matrix</span>
-            </a>
-            <div class="nav-links" id="navLinks">
+            <nav class="container">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <div class="nav-links" id="navLinks">
+                        
                 <button class="close-btn" id="closeBtn" aria-label="Close Menu">&times;</button>
                 <a href="index.html">Home</a>
                 <a href="bsc-math.html">B.Sc. Math</a>
@@ -25,19 +23,25 @@
                 <a href="phd.html">Ph.D Math</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-            </div>
-            <div class="nav-right">
-                <div class="search-container">
-                    <button id="searchToggle" class="search-toggle" aria-label="Open Search">🔍</button>
-                    <div class="search-box hidden">
-                        <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
-                        <div id="searchResults" class="search-results"></div>
+            
                     </div>
                 </div>
-            </div>
-            <div class="nav-overlay" id="navOverlay"></div>
-        </nav>
-    </header>
+                <a href="index.html" class="logo">
+                    <img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;">
+                    <span>DU Matrix</span>
+                </a>
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button id="searchToggle" class="search-toggle" aria-label="Open Search">🔍</button>
+                        <div class="search-box hidden">
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                            <div id="searchResults" class="search-results"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-overlay" id="navOverlay"></div>
+            </nav>
+        </header>
     <main class="container">
         <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> M.Sc. Math</nav>
         <section class="page-header"><h1>M.Sc. Math Notes</h1><p>Subject study materials.</p></section>

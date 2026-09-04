@@ -1,3 +1,60 @@
+#!/bin/bash
+
+# 1. Fix HTML structure using Python
+python3 << 'PYEOF'
+import re
+
+files = ['index.html', 'bsc-math.html', 'msc-math.html', 'phd.html', 'about.html', 'contact.html']
+
+for filename in files:
+    try:
+        with open(filename, 'r') as f:
+            content = f.read()
+
+        # Extract existing nav links content (to keep your links intact)
+        match = re.search(r'<div class="nav-links" id="navLinks">(.*?)</div>', content, re.S)
+        nav_links = match.group(1) if match else ""
+
+        # Build new header with 3 sections: Left (Menu + Links), Center (Logo), Right (Search)
+        new_header = f'''<header>
+            <nav class="container">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <div class="nav-links" id="navLinks">
+                        {nav_links}
+                    </div>
+                </div>
+                <a href="index.html" class="logo">
+                    <img src="DU_Matrix no Bg.png" alt="DU Matrix Logo" loading="lazy" style="height: 45px; width: auto; object-fit: contain; display: block;">
+                    <span>DU Matrix</span>
+                </a>
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button id="searchToggle" class="search-toggle" aria-label="Open Search">🔍</button>
+                        <div class="search-box hidden">
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search notes...">
+                            <div id="searchResults" class="search-results"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-overlay" id="navOverlay"></div>
+            </nav>
+        </header>'''
+
+        # Replace header block
+        content = re.sub(r'<header>.*?</header>', new_header, content, flags=re.S)
+
+        with open(filename, 'w') as f:
+            f.write(content)
+        print(f"Fixed header in {filename}")
+    except Exception as e:
+        print(f"Skipping {filename}: {e}")
+PYEOF
+
+# 2. Update CSS (Fix the Grid layout so Logo is centered and no overlap)
+cat > style.css << 'CSS'
 :root {
   --bg-primary: #0d1117;
   --bg-secondary: #161b22;
@@ -254,3 +311,77 @@ footer { background-color: var(--bg-secondary); border-top: 1px solid var(--bord
 .scroll-top { position: fixed; bottom: 25px; right: 25px; background: var(--accent); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; display: none; z-index: 999; }
 .scroll-top.visible { display: block; }
 @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+CSS
+
+# 3. Update JavaScript (for Drawer & Search)
+cat > script.js << 'JS'
+document.addEventListener("DOMContentLoaded", () => {
+    // Drawer
+    const menuToggle = document.getElementById("menuToggle");
+    const closeBtn = document.getElementById("closeBtn");
+    const navLinks = document.getElementById("navLinks");
+    const navOverlay = document.getElementById("navOverlay");
+
+    function openMenu() { navLinks?.classList.add("open"); navOverlay?.classList.add("open"); document.body.style.overflow = "hidden"; }
+    function closeMenu() { navLinks?.classList.remove("open"); navOverlay?.classList.remove("open"); document.body.style.overflow = ""; }
+    if (menuToggle) menuToggle.addEventListener("click", openMenu);
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+    if (navOverlay) navOverlay.addEventListener("click", closeMenu);
+
+    // Search Toggle
+    const searchToggle = document.getElementById("searchToggle");
+    const searchBox = document.querySelector(".search-box");
+    if (searchToggle && searchBox) {
+        searchToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            searchBox.classList.toggle("hidden");
+            if (!searchBox.classList.contains("hidden")) document.getElementById("searchInput").focus();
+        });
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".search-container") && !searchBox.classList.contains("hidden")) searchBox.classList.add("hidden");
+        });
+    }
+
+    // Scroll Top
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) {
+        window.addEventListener("scroll", () => scrollTopBtn.classList.toggle("visible", window.scrollY > 300));
+        scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+
+    // Search Data
+    const searchData = [
+        { title: "Calculus", desc: "Limits, continuity", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Linear Algebra", desc: "Vectors, matrices", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Abstract Algebra", desc: "Groups, rings", url: "bsc-math.html", badge: "B.Sc." },
+        { title: "Field Theory", desc: "Notes", url: "msc-math.html", badge: "M.Sc." },
+        { title: "Advanced Algebra", desc: "Galois", url: "phd.html", badge: "Ph.D" },
+        { title: "Functional Analysis", desc: "Banach", url: "phd.html", badge: "Ph.D" }
+    ];
+    const input = document.getElementById("searchInput");
+    const results = document.getElementById("searchResults");
+    if (input && results) {
+        if (typeof Fuse === "undefined") {
+            const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"; s.onload = initSearch; document.head.appendChild(s);
+        } else initSearch();
+        function initSearch() {
+            const fuse = new Fuse(searchData, { keys: ["title", "desc"], threshold: 0.3 });
+            input.addEventListener("input", function () {
+                if (this.value.trim().length < 2) { results.innerHTML = ""; return; }
+                let html = "";
+                fuse.search(this.value.trim()).slice(0, 5).forEach(({ item }) => {
+                    html += `<a href="${item.url}" class="search-result-item"><div>${item.title} <span class="badge">${item.badge}</span></div></a>`;
+                });
+                results.innerHTML = html;
+            });
+        }
+    }
+});
+JS
+
+# 4. Push to GitHub
+git add .
+git commit -m "Fixed header layout: Logo centered, Nav left, Search right"
+git push origin main
+
+echo "✅ Done! Refresh your website - the overlap is fixed and layout is perfect."
