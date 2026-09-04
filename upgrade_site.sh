@@ -1,3 +1,86 @@
+#!/bin/bash
+
+echo "Starting website upgrades..."
+
+# =====================================================
+# 1. CREATE CUSTOM 404 PAGE
+# =====================================================
+cat > 404.html << 'HTML'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | DU Matrix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="text-align: center; padding: 100px 20px;">
+        <h1 style="font-size: 4rem; color: var(--accent);">404</h1>
+        <p>Oops! This page doesn't exist.</p>
+        <a href="index.html" class="btn">Go Home</a>
+    </div>
+</body>
+</html>
+HTML
+echo "✅ Created 404.html"
+
+# =====================================================
+# 2 & 3. ADD PRECONNECT & OG TAGS TO ALL HTML FILES
+# =====================================================
+python3 << 'PYEOF'
+import re
+
+files = ['index.html', 'bsc-math.html', 'msc-math.html', 'phd.html', 'about.html', 'contact.html']
+
+for filename in files:
+    try:
+        with open(filename, 'r') as f:
+            content = f.read()
+        
+        # Add preconnect for Google Fonts if not present
+        if 'preconnect' not in content:
+            content = content.replace(
+                '<link href="https://fonts.googleapis.com',
+                '<link rel="preconnect" href="https://fonts.googleapis.com">\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n    <link href="https://fonts.googleapis.com'
+            )
+        
+        # Add OG meta tags to all files for consistency
+        og_tags = '''    <meta property="og:title" content="DU Matrix">
+    <meta property="og:description" content="Academic resources and Mathematics study material.">
+    <meta property="og:image" content="https://dumatrix.github.io/DU_Matrix%20no%20Bg.png">
+    <meta property="og:url" content="https://dumatrix.github.io/">
+'''
+        if 'og:title' not in content:
+            content = re.sub(r'(<title>.*?</title>)', r'\1\n' + og_tags, content)
+        
+        with open(filename, 'w') as f:
+            f.write(content)
+        print(f"✅ Updated {filename}")
+    except Exception as e:
+        print(f"⚠️ Skipping {filename}: {e}")
+PYEOF
+
+# =====================================================
+# 10. ADD SMOOTH PAGE FADE-IN TO CSS
+# =====================================================
+cat >> style.css << 'CSS'
+
+/* Smooth page fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+main {
+    animation: fadeIn 0.5s ease-out;
+}
+CSS
+echo "✅ Added smooth page fade-in"
+
+# =====================================================
+# 4, 5, 6. UPDATE SCRIPT.JS (Debounce, Shortcut, Year)
+# =====================================================
+cat > script.js << 'JS'
 document.addEventListener("DOMContentLoaded", () => {
     // ---------- MOBILE DRAWER ----------
     const menuToggle = document.getElementById("menuToggle");
@@ -138,3 +221,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+JS
+echo "✅ Updated script.js with debounce, keyboard shortcut, dynamic year"
+
+# =====================================================
+# COMMIT AND PUSH
+# =====================================================
+git add .
+git commit -m "Added: 404 page, OG tags, preconnect, search debounce, keyboard shortcut, dynamic year, fade-in animation"
+git push origin main
+
+echo "🎉 All upgrades applied and pushed to GitHub!"

@@ -291,3 +291,12 @@ footer { background-color: var(--bg-secondary); border-top: 1px solid var(--bord
   .search-box { position: fixed; top: 60px; right: 20px; width: calc(100% - 40px); max-width: 300px; }
   .cards-grid { grid-template-columns: 1fr; }
 }
+
+/* Smooth page fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+main {
+    animation: fadeIn 0.5s ease-out;
+}
