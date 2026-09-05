@@ -306,21 +306,69 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Professional Footer Grid */
+/* Professional Footer Grid */ p style (remove old single-line) */
+footer > .container {
+  display: none; /* Hide old simple footer */
+}
+
+/* Force Desktop 3-column Footer */
+@media (min-width: 769px) {
+    
+    
+}
+
+/* Force Mobile 1-column Footer */
+@media (max-width: 768px) {
+    
+}
+
+/* Fix purple default link colors in footer */
+
+.footer-col ul li a:hover {
+    color: var(--accent) !important;
+}
+
+/* FORCED CLEAN FOOTER RESET */
+
+
+
+
+
+
+
+
+.footer-col ul li a:hover {
+    color: var(--accent) !important;
+}
+
+
+
+@media (max-width: 768px) {
+    
+}
+
+/* ===== PROFESSIONAL FOOTER (FLEXBOX) ===== */
 footer {
   background-color: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
-  padding: 30px 0 10px 0;
+  padding: 30px 0 0 0;
   margin-top: 40px;
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 30px;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px 20px 20px;
+  text-align: left;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
 }
 
 .footer-col h3 {
@@ -339,6 +387,7 @@ footer {
 .footer-col ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-col ul li {
@@ -346,117 +395,34 @@ footer {
 }
 
 .footer-col ul li a {
-  color: var(--text-secondary);
-  text-decoration: none;
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
   font-size: 0.9rem;
-  transition: color 0.2s;
+  display: inline-block;
 }
 
 .footer-col ul li a:hover {
-  color: var(--accent);
-}
-
-.footer-social {
-  display: flex;
-  gap: 12px;
-  margin-top: 15px;
-}
-
-.footer-social a {
-  color: var(--text-secondary);
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-social a:hover {
-  color: var(--accent);
+  color: var(--accent) !important;
 }
 
 .footer-bottom {
-  text-align: center;
   border-top: 1px solid var(--border-color);
-  padding-top: 15px;
-  margin-top: 20px;
+  padding: 15px 20px;
+  text-align: center;
   color: var(--text-secondary);
   font-size: 0.85rem;
+  margin-top: 10px;
 }
 
-/* Adjust existing footer p style (remove old single-line) */
-footer > .container {
-  display: none; /* Hide old simple footer */
-}
-
-/* Force Desktop 3-column Footer */
-@media (min-width: 769px) {
-    .footer-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        text-align: left;
-    }
-    .footer-bottom {
-        text-align: center !important;
-    }
-}
-
-/* Force Mobile 1-column Footer */
+/* Mobile: Stack columns vertically */
 @media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-        text-align: center;
-    }
-}
-
-/* Fix purple default link colors in footer */
-.footer-col ul li a {
-    color: var(--text-secondary) !important;
-    text-decoration: none !important;
-}
-.footer-col ul li a:hover {
-    color: var(--accent) !important;
-}
-
-/* FORCED CLEAN FOOTER RESET */
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto !important;
-    padding: 30px 20px !important;
-    text-align: left !important;
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-col {
     width: 100%;
-}
-
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-col ul li {
-    margin-bottom: 8px;
-}
-
-.footer-col ul li a {
-    color: var(--text-secondary) !important;
-    text-decoration: none !important;
-    font-size: 0.9rem;
-}
-
-.footer-col ul li a:hover {
-    color: var(--accent) !important;
-}
-
-.footer-bottom {
-    text-align: center !important;
-    border-top: 1px solid var(--border-color);
-    padding: 15px !important;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-        text-align: center !important;
-    }
+  }
 }
