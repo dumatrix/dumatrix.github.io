@@ -353,3 +353,18 @@ footer > .container {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+/* ---- Center Forms ---- */
+.form-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+.form-wrapper {
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    text-align: left !important;
+}
