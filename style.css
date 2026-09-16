@@ -368,3 +368,14 @@ footer > .container {
     display: block !important;
     text-align: left !important;
 }
+
+/* ---- Adjust Form Width ---- */
+.form-wrapper {
+    width: 100% !important;
+    max-width: 800px !important; /* Increased from 600px to look better */
+    margin: 0 auto !important;
+    display: block !important;
+}
+.form-wrapper form {
+    width: 100% !important; /* Ensure form fills the wrapper completely */
+}
