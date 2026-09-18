@@ -399,3 +399,32 @@ footer > .container {
 .form-section > p {
     text-align: center !important;
 }
+
+/* ---- Bulletproof Form Centering (CSS Only) ---- */
+/* Target the section that contains the form */
+section[style*="margin-top: 50px"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* Target the inner wrapper div to center it and make it wider */
+section[style*="margin-top: 50px"] > div {
+    width: 100% !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    text-align: left !important;
+}
+
+/* Ensure the form fills the wrapper */
+section[style*="margin-top: 50px"] > div > form {
+    width: 100% !important;
+}
+
+/* Keep headings and subtitle centered */
+section[style*="margin-top: 50px"] > h2,
+section[style*="margin-top: 50px"] > p {
+    text-align: center !important;
+}
