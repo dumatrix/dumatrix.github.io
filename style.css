@@ -379,3 +379,23 @@ footer > .container {
 .form-wrapper form {
     width: 100% !important; /* Ensure form fills the wrapper completely */
 }
+
+/* ---- Bulletproof Form Centering ---- */
+.form-section {
+    text-align: center !important;
+}
+.form-wrapper {
+    display: inline-block !important;
+    text-align: left !important;
+    width: 100% !important;
+    max-width: 800px !important; /* Wider box to match the cards above */
+    margin: 0 auto !important;
+}
+.form-wrapper form {
+    width: 100% !important;
+}
+/* Keep the heading and subtitle centered */
+.form-section > h2, 
+.form-section > p {
+    text-align: center !important;
+}
