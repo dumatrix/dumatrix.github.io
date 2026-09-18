@@ -428,3 +428,30 @@ section[style*="margin-top: 50px"] > h2,
 section[style*="margin-top: 50px"] > p {
     text-align: center !important;
 }
+
+/* ---- Ultimate Form Centering and Width Fix ---- */
+.form-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.form-wrapper-wide {
+    width: 100% !important;
+    max-width: 900px !important; /* Matches the width of the cards above */
+    margin: 0 auto !important;
+    display: block !important;
+    text-align: left !important;
+}
+
+.form-wrapper-wide form {
+    width: 100% !important;
+}
+
+/* Ensure inputs stretch to fill the new width */
+.form-wrapper-wide input[type="text"],
+.form-wrapper-wide input[type="email"],
+.form-wrapper-wide textarea {
+    width: 100% !important;
+}
