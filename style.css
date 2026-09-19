@@ -476,3 +476,24 @@ section[style*="margin-top: 50px"] > p {
     width: 100% !important;
     box-sizing: border-box !important;
 }
+
+/* ---- Match Form Width to Cards Grid ---- */
+.form-full-width {
+    width: 100% !important;
+    max-width: 100% !important; /* Removes the 900px restriction, matching the container width */
+    margin: 0 auto !important;
+    display: block !important;
+    text-align: left !important;
+}
+
+.form-full-width form {
+    width: 100% !important;
+}
+
+/* Ensure inputs stretch to fill the new wider container */
+.form-full-width input[type="text"],
+.form-full-width input[type="email"],
+.form-full-width textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
