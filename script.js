@@ -146,3 +146,35 @@ document.addEventListener("DOMContentLoaded", function() {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
+
+// ---- DEFINITIVE FORM LAYOUT FIX (JavaScript DOM Override) ----
+document.addEventListener("DOMContentLoaded", () => {
+    // Find all forms on the page
+    const forms = document.querySelectorAll("form");
+    
+    forms.forEach(form => {
+        let wrapper = form.parentElement;
+        
+        // 1. Force the wrapper to be full width and centered
+        if (wrapper) {
+            wrapper.style.setProperty("max-width", "100%", "important");
+            wrapper.style.setProperty("width", "100%", "important");
+            wrapper.style.setProperty("margin", "0 auto", "important");
+            wrapper.style.setProperty("display", "block", "important");
+            wrapper.style.setProperty("text-align", "left", "important");
+        }
+        
+        // 2. Make the form itself stretch to fill the wrapper
+        form.style.setProperty("width", "100%", "important");
+        form.style.setProperty("box-sizing", "border-box", "important");
+
+        // 3. Force the parent section to center everything
+        let section = wrapper ? wrapper.closest("section") : null;
+        if (section) {
+            section.style.setProperty("display", "flex", "important");
+            section.style.setProperty("flex-direction", "column", "important");
+            section.style.setProperty("align-items", "center", "important");
+            section.style.setProperty("text-align", "center", "important");
+        }
+    });
+});
